@@ -27,6 +27,13 @@ function QuestionList({ BASE_URL, onChangePage }) {
          });
    }
 
+   function handleAnswerChange(updatedQuestion) {
+      const updatedQuestions = questions.map((question) =>
+         question.id === updatedQuestion.id ? updatedQuestion : question
+      );
+      setQuestions(updatedQuestions);
+   }
+
    return (
       <section>
          <h1>Quiz Questions</h1>
@@ -37,6 +44,7 @@ function QuestionList({ BASE_URL, onChangePage }) {
                   question={question}
                   BASE_URL={BASE_URL}
                   onDelete={handleDelete}
+                  onAnswerChange={handleAnswerChange}
                />
             ))}
          </ul>
